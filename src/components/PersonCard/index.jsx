@@ -1,7 +1,8 @@
-import { Component } from "react";
+// import { Component } from "react";
 import PropTypes from "prop-types";
+import { useState } from "react";
 
-class PersonCard extends Component {
+/* class PersonCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -25,6 +26,23 @@ class PersonCard extends Component {
             </div>
         );
     }
+} */
+
+const PersonCard = (props) => {
+    const [age, setAge] = useState(props.age);
+
+    const birthdayButton = () => {
+        setAge(age + 1);
+    }
+
+    return (
+        <div className="person-card">
+            <h1>{props.lastName}, {props.firstName}</h1>
+            <p>Age: {age}</p>
+            <p>Hair Color: {props.hairColor}</p>
+            <button onClick={birthdayButton}>Birthday Button for {props.firstName} {props.lastName}</button>
+        </div>
+    );
 }
 
 PersonCard.propTypes = {
